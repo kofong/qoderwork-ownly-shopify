@@ -1,0 +1,216 @@
+{%- comment -%}
+  Marquee — Infinite scrolling text/icon strip.
+  Uses a custom element + CSS keyframes for GPU-accelerated smooth scrolling.
+  Hover slows down; respects prefers-reduced-motion.
+{%- endcomment -%}
+
+<script src="{{ 'marquee.js' | asset_url }}" type="module" fetchpriority="low"></script>
+
+<div
+  class="marquee section-padding"
+  style="
+    background: {{ section.settings.background_color | default: 'var(--color-primary)' }};
+    color: {{ section.settings.text_color | default: '#ffffff' }};
+    --marquee-gap: {{ section.settings.gap }}px;
+    --marquee-speed: {{ section.settings.speed }}s;
+    --marquee-direction: {{ section.settings.direction }};
+  "
+>
+  <marquee-component class="marquee__track" data-speed-factor="{{ section.settings.speed }}">
+    <div class="marquee__wrapper" ref="wrapper">
+      <div class="marquee__content" ref="content">
+        <div class="marquee__items" ref="marqueeItems[]">
+          {%- for block in section.blocks -%}
+            <span class="marquee__item" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                <span class="marquee__icon">{{ block.settings.icon }}</span>
+              {%- endif -%}
+              <span class="marquee__text">{{ block.settings.text }}</span>
+            </span>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </marquee-component>
+</div>
+
+{% stylesheet %}
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  marquee-component {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .marquee__track {
+    display: block;
+  }
+
+  .marquee__wrapper {
+    display: flex;
+    gap: var(--marquee-gap);
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .marquee__content {
+    min-width: max-content;
+    display: flex;
+    gap: var(--marquee-gap);
+  }
+
+  .marquee__items {
+    min-width: max-content;
+    display: flex;
+    gap: var(--marquee-gap);
+    align-items: center;
+  }
+
+  .marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .marquee__icon {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .marquee__text {
+    white-space: nowrap;
+  }
+
+  /* Smooth infinite scroll animation */
+  @media (prefers-reduced-motion: no-preference) {
+    marquee-component:not([data-disabled]) .marquee__wrapper {
+      animation: marquee-scroll var(--marquee-speed) linear infinite var(--marquee-direction);
+    }
+  }
+
+  @keyframes marquee-scroll {
+    to {
+      transform: translate3d(calc(-50% - (var(--marquee-gap) / 2)), 0, 0);
+    }
+  }
+
+  /* Reduced motion: show static */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__wrapper {
+      animation: none !important;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Marquee",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll speed (seconds)",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 25,
+      "unit": "s"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between items",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "options": [
+        { "value": "normal", "label": "Left to right" },
+        { "value": "reverse", "label": "Right to left" }
+      ],
+      "default": "normal"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Your text here"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "★"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": { "text": "Upload once, own everything", "icon": "✦" }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": { "text": "Free shipping on orders $99+", "icon": "🚚" }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": { "text": "AI-powered design studio", "icon": "🎨" }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": { "text": "No minimum order", "icon": "✨" }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": { "text": "Global shipping", "icon": "🌍" }
+        },
+        "item_6": {
+          "type": "item",
+          "settings": { "text": "Premium quality guaranteed", "icon": "💎" }
+        }
+      },
+      "block_order": ["item_1", "item_2", "item_3", "item_4", "item_5", "item_6"]
+    }
+  ]
+}
+{% endschema %}

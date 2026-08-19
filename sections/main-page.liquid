@@ -1,0 +1,32 @@
+<section class="main-page section-padding">
+  <div class="section-container" style="max-width: 800px;">
+    <h1 class="main-page__title">{{ page.title }}</h1>
+    <div class="main-page__content rte">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .main-page__title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+  }
+  .main-page__content {
+    line-height: 1.8;
+    font-size: 1.0625rem;
+  }
+  .rte h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+  .rte p { margin-bottom: 1rem; }
+  .rte ul, .rte ol { margin-bottom: 1rem; padding-inline-start: 1.5rem; }
+  .rte a { color: var(--color-accent); text-decoration: underline; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Page content",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,179 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "hero_style": "fullbleed",
+        "hero_height": 85,
+        "overlay_color": "#00000066",
+        "show_scroll_indicator": true,
+        "badge_text": "AI-Powered Customization",
+        "heading": "Upload once,",
+        "heading_highlight": "own everything.",
+        "description": "Custom T-shirts, AirPods cases, mugs, tote bags, stickers and more. Upload your logo or let AI design it — we produce the whole package.",
+        "cta_primary_text": "Shop now",
+        "show_ai_cta": true,
+        "cta_ai_text": "Try AI Designer"
+      }
+    },
+    "trust-bar": {
+      "type": "trust-bar",
+      "blocks": {
+        "item-1": { "type": "item", "settings": { "icon": "🎯", "title": "No Minimum", "description": "Order even 1 piece" } },
+        "item-2": { "type": "item", "settings": { "icon": "🤖", "title": "AI Design", "description": "Describe & generate" } },
+        "item-3": { "type": "item", "settings": { "icon": "🌍", "title": "Global Shipping", "description": "Worldwide delivery" } },
+        "item-4": { "type": "item", "settings": { "icon": "💰", "title": "Bulk Discounts", "description": "Up to 40% off" } },
+        "item-5": { "type": "item", "settings": { "icon": "✅", "title": "Quality Guarantee", "description": "Free reprint" } }
+      },
+      "block_order": ["item-1", "item-2", "item-3", "item-4", "item-5"]
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "background_color": "#1A1A2E",
+        "text_color": "#ffffff",
+        "speed": 25,
+        "gap": 40,
+        "direction": "normal"
+      },
+      "blocks": {
+        "m-1": { "type": "item", "settings": { "text": "Upload once, own everything", "icon": "✦" } },
+        "m-2": { "type": "item", "settings": { "text": "Free shipping on orders $99+", "icon": "🚚" } },
+        "m-3": { "type": "item", "settings": { "text": "AI-powered design studio", "icon": "🎨" } },
+        "m-4": { "type": "item", "settings": { "text": "No minimum order", "icon": "✨" } },
+        "m-5": { "type": "item", "settings": { "text": "Global shipping worldwide", "icon": "🌍" } },
+        "m-6": { "type": "item", "settings": { "text": "Premium quality guaranteed", "icon": "💎" } }
+      },
+      "block_order": ["m-1", "m-2", "m-3", "m-4", "m-5", "m-6"]
+    },
+    "categories-grid": {
+      "type": "categories-grid",
+      "settings": {
+        "tag": "Shop by Product",
+        "heading": "What Do You Want to Customize?",
+        "description": "From everyday essentials to unique gifts — pick your canvas and make it yours."
+      },
+      "blocks": {
+        "cat-1": { "type": "category", "settings": { "icon": "👕", "title": "T-Shirts & Apparel", "subtitle": "6,300+ options · From $14.99" } },
+        "cat-2": { "type": "category", "settings": { "icon": "☕", "title": "Mugs & Drinkware", "subtitle": "From $9.99" } },
+        "cat-3": { "type": "category", "settings": { "icon": "📱", "title": "Phone Cases", "subtitle": "From $12.99" } },
+        "cat-4": { "type": "category", "settings": { "icon": "🎒", "title": "Bags & Accessories", "subtitle": "From $11.99" } },
+        "cat-5": { "type": "category", "settings": { "icon": "🖼️", "title": "Posters & Prints", "subtitle": "From $8.99" } },
+        "cat-6": { "type": "category", "settings": { "icon": "🔑", "title": "Keychains & Pins", "subtitle": "From $5.99" } },
+        "cat-7": { "type": "category", "settings": { "icon": "💌", "title": "Cards & Stickers", "subtitle": "From $3.99" } }
+      },
+      "block_order": ["cat-1", "cat-2", "cat-3", "cat-4", "cat-5", "cat-6", "cat-7"]
+    },
+    "customization-paths": {
+      "type": "customization-paths",
+      "settings": {
+        "tag": "Two Ways to Create",
+        "heading": "How Do You Want to Design?",
+        "description": "Upload your own artwork, or describe your idea and let AI bring it to life.",
+        "upload_icon": "📤",
+        "upload_title": "Upload Your Design",
+        "upload_description": "Got your own artwork, logo, or photo? Upload it and see it on any product instantly.",
+        "upload_cta_text": "Upload & Create",
+        "ai_icon": "✨",
+        "ai_title": "AI Design Studio",
+        "ai_description": "No design skills needed. Just describe what you want and AI generates unique designs.",
+        "ai_cta_text": "Try AI Designer"
+      },
+      "blocks": {
+        "upload-1": { "type": "upload_step", "settings": { "number": "1", "text": "Pick a product (T-shirt, mug, etc.)" } },
+        "upload-2": { "type": "upload_step", "settings": { "number": "2", "text": "Upload your image or drag & drop" } },
+        "upload-3": { "type": "upload_step", "settings": { "number": "3", "text": "Adjust size, position, and preview" } },
+        "upload-4": { "type": "upload_step", "settings": { "number": "4", "text": "Add to cart and checkout" } },
+        "ai-1": { "type": "ai_step", "settings": { "number": "1", "text": "Describe your idea in words" } },
+        "ai-2": { "type": "ai_step", "settings": { "number": "2", "text": "AI generates 4 unique designs" } },
+        "ai-3": { "type": "ai_step", "settings": { "number": "3", "text": "Pick your favorite & customize" } },
+        "ai-4": { "type": "ai_step", "settings": { "number": "4", "text": "Preview on product & order" } }
+      },
+      "block_order": ["upload-1", "upload-2", "upload-3", "upload-4", "ai-1", "ai-2", "ai-3", "ai-4"]
+    },
+    "how-it-works": {
+      "type": "how-it-works",
+      "settings": {
+        "tag": "Simple Process",
+        "heading": "How It Works",
+        "description": "From idea to doorstep in 4 easy steps."
+      },
+      "blocks": {
+        "step-1": { "type": "step", "settings": { "icon": "🎯", "number": "1", "title": "Choose Product", "description": "Browse our catalog of 50+ customizable products" } },
+        "step-2": { "type": "step", "settings": { "icon": "🎨", "number": "2", "title": "Design It", "description": "Upload your art or generate with AI" } },
+        "step-3": { "type": "step", "settings": { "icon": "👁️", "number": "3", "title": "Preview", "description": "See real-time mockups before you buy" } },
+        "step-4": { "type": "step", "settings": { "icon": "📦", "number": "4", "title": "We Ship", "description": "Produced on-demand and shipped to your door" } }
+      },
+      "block_order": ["step-1", "step-2", "step-3", "step-4"]
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "tag": "Most Popular",
+        "heading": "Bestselling Custom Products",
+        "description": "See what other creators are making.",
+        "view_all_text": "View All Products"
+      },
+      "blocks": {
+        "prod-1": { "type": "product_card", "settings": { "fallback_title": "Custom Print T-Shirt", "fallback_price": "$19.99", "subtitle": "Premium cotton · DTG printing", "badge": "Bestseller" } },
+        "prod-2": { "type": "product_card", "settings": { "fallback_title": "Custom AirPods Case", "fallback_price": "$14.99", "subtitle": "UV printing · All models" } },
+        "prod-3": { "type": "product_card", "settings": { "fallback_title": "Custom Tote Bag", "fallback_price": "$16.99", "subtitle": "Canvas · Eco-friendly", "badge": "New" } },
+        "prod-4": { "type": "product_card", "settings": { "fallback_title": "Custom Mug", "fallback_price": "$12.99", "subtitle": "Ceramic · Dishwasher safe" } }
+      },
+      "block_order": ["prod-1", "prod-2", "prod-3", "prod-4"]
+    },
+    "b2b-section": {
+      "type": "b2b-section",
+      "settings": {
+        "heading": "Custom Merch for Your Business",
+        "description": "Whether you need 10 branded polos or 500 event T-shirts, we handle everything from design to delivery.",
+        "cta_text": "Get a Bulk Quote"
+      },
+      "blocks": {
+        "feat-1": { "type": "feature", "settings": { "icon": "💰", "text": "Volume pricing — bigger orders, bigger savings" } },
+        "feat-2": { "type": "feature", "settings": { "icon": "🎨", "text": "Free design assistance for orders 50+" } },
+        "feat-3": { "type": "feature", "settings": { "icon": "📦", "text": "Bulk shipping & individual packaging options" } },
+        "feat-4": { "type": "feature", "settings": { "icon": "⏱️", "text": "Rush orders available — as fast as 48 hours" } },
+        "stat-1": { "type": "stat", "settings": { "number": "40%", "label": "Max Bulk Discount" } },
+        "stat-2": { "type": "stat", "settings": { "number": "48h", "label": "Rush Order" } },
+        "stat-3": { "type": "stat", "settings": { "number": "50+", "label": "Product Types" } },
+        "stat-4": { "type": "stat", "settings": { "number": "1pc", "label": "Minimum Order" } }
+      },
+      "block_order": ["feat-1", "feat-2", "feat-3", "feat-4", "stat-1", "stat-2", "stat-3", "stat-4"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "tag": "Happy Customers",
+        "heading": "What People Are Making",
+        "description": "Real stories from real customers."
+      },
+      "blocks": {
+        "t-1": { "type": "testimonial", "settings": { "initial": "M", "name": "Mike R.", "role": "Startup Founder", "quote": "Ordered 30 custom T-shirts for our startup launch. The AI designer made it so easy — perfect designs in seconds." } },
+        "t-2": { "type": "testimonial", "settings": { "initial": "S", "name": "Sarah L.", "role": "Mom & Blogger", "quote": "Made personalized mugs with my kids drawings as Christmas gifts. The print quality is amazing." } },
+        "t-3": { "type": "testimonial", "settings": { "initial": "J", "name": "Jake T.", "role": "Podcast Host", "quote": "We order custom merch for every episode. Bulk pricing is great and turnaround time is fast." } }
+      },
+      "block_order": ["t-1", "t-2", "t-3"]
+    },
+    "cta-banner": {
+      "type": "cta-banner",
+      "settings": {
+        "heading": "Ready to Create Something Unique?",
+        "description": "Upload your design or let AI bring your idea to life. No minimum order required.",
+        "cta_text": "Start Your Custom Order"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust-bar",
+    "marquee",
+    "categories-grid",
+    "customization-paths",
+    "how-it-works",
+    "featured-products",
+    "b2b-section",
+    "testimonials",
+    "cta-banner"
+  ]
+}

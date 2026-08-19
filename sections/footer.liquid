@@ -1,0 +1,222 @@
+<footer class="footer section-padding">
+  <div class="section-container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3 class="footer__brand-title">
+          {%- if section.settings.logo != blank -%}
+            {{ section.settings.logo | image_url: width: 120 | image_tag: loading: 'lazy', alt: shop.name, width: 120 }}
+          {%- else -%}
+            {{ shop.name }}
+          {%- endif -%}
+        </h3>
+        <p class="footer__brand-desc">{{ section.settings.brand_description }}</p>
+
+        {%- if section.settings.newsletter_heading != blank -%}
+          <div class="footer__newsletter">
+            <h4 class="footer__newsletter-heading">{{ section.settings.newsletter_heading }}</h4>
+            {%- form 'customer' -%}
+              <div class="footer__newsletter-form">
+                <input type="email" name="email" placeholder="{{ section.settings.newsletter_placeholder }}" class="footer__newsletter-input" required>
+                <button type="submit" class="btn btn--primary footer__newsletter-btn">{{ section.settings.newsletter_button_text }}</button>
+              </div>
+            {%- endform -%}}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'link_column' -%}
+          <div class="footer__col" {{ block.shopify_attributes }}>
+            <h4 class="footer__col-title">{{ block.settings.title }}</h4>
+            {%- assign links = block.settings.links | split: ',' -%}
+            {%- for link_text in links -%}
+              {%- assign trimmed = link_text | strip -%}
+              {%- if trimmed != blank -%}
+                <a href="{{ block.settings.base_url }}" class="footer__col-link">{{ trimmed }}</a>
+              {%- endif -%}
+            {%- endfor -%}}
+          </div>
+        {%- endif -%}}
+      {%- endfor -%}
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__copyright">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+      </div>
+      <div class="footer__legal">
+        <a href="{{ section.settings.privacy_url }}">Privacy Policy</a>
+        <span> · </span>
+        <a href="{{ section.settings.terms_url }}">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% stylesheet %}
+  .footer {
+    background: var(--color-primary);
+    color: white;
+    padding-bottom: 2rem;
+  }
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .footer__brand-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .footer__brand-title img {
+    max-height: 28px;
+    width: auto;
+  }
+  .footer__brand-desc {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    max-width: 320px;
+  }
+  .footer__newsletter {
+    margin-top: 1.5rem;
+  }
+  .footer__newsletter-heading {
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .footer__newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .footer__newsletter-input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 0.875rem;
+    font-family: var(--font-body);
+  }
+  .footer__newsletter-input::placeholder { color: rgba(255,255,255,0.4); }
+  .footer__newsletter-btn {
+    padding: 10px 16px;
+    font-size: 0.8125rem;
+  }
+  .footer__col-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .footer__col-link {
+    display: block;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0.625rem;
+    transition: var(--transition);
+  }
+  .footer__col-link:hover { color: var(--color-accent); }
+  .footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.4);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .footer__legal a {
+    color: rgba(255,255,255,0.4);
+    transition: var(--transition);
+  }
+  .footer__legal a:hover { color: var(--color-accent); }
+
+  @media (max-width: 1024px) {
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .footer__grid { grid-template-columns: 1fr; }
+    .footer__bottom { flex-direction: column; text-align: center; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "footer",
+  "class": "footer-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer logo"
+    },
+    {
+      "type": "textarea",
+      "id": "brand_description",
+      "label": "Brand description",
+      "default": "Your one-stop shop for custom printed products. Design online with AI or upload your own art. No minimum order, worldwide shipping."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter heading",
+      "default": "Get 10% off your first order"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Email placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_text",
+      "label": "Newsletter button text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "url",
+      "id": "privacy_url",
+      "label": "Privacy policy URL"
+    },
+    {
+      "type": "url",
+      "id": "terms_url",
+      "label": "Terms of service URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_column",
+      "name": "Link column",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Column title", "default": "Products" },
+        { "type": "textarea", "id": "links", "label": "Links (comma-separated)", "default": "T-Shirts, Mugs, Phone Cases, Posters, Stickers" },
+        { "type": "url", "id": "base_url", "label": "Base URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        { "type": "link_column", "settings": { "title": "Products", "links": "T-Shirts & Apparel, Mugs & Drinkware, Phone Cases, Posters & Prints, Stickers & Pins" } },
+        { "type": "link_column", "settings": { "title": "Services", "links": "AI Design Studio, Upload Your Design, Bulk Orders, For Business, Gift Cards" } },
+        { "type": "link_column", "settings": { "title": "Support", "links": "How It Works, Shipping & Returns, Size Guide, FAQ, Contact Us" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

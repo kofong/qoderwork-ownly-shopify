@@ -1,0 +1,16 @@
+{
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_width": 120,
+        "sticky_header": true,
+        "transparent_header": true,
+        "show_announcement": false,
+        "announcement_text": "Free shipping on orders over $49 | Use code <strong>FIRST10</strong> for 10% off your first order"
+      }
+    }
+  },
+  "order": ["header"]
+}

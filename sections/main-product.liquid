@@ -1,0 +1,67 @@
+<section class="main-product section-padding">
+  <div class="section-container">
+    <div class="main-product__grid">
+      <div class="main-product__media">
+        {%- if product.featured_media -%}
+          {{ product.featured_media | media_tag }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'main-product__placeholder' }}
+        {%- endif -%}
+      </div>
+      <div class="main-product__info">
+        <h1 class="main-product__title">{{ product.title }}</h1>
+        <div class="main-product__price">{{ product.selected_or_first_available_variant.price | money }}</div>
+        <div class="main-product__description">{{ product.description }}</div>
+        {%- form 'product', product -%}
+          <select name="id" class="main-product__variant-select">
+            {%- for variant in product.variants -%}
+              <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+                {{ variant.title }} — {{ variant.price | money }}
+              </option>
+            {%- endfor -%}
+          </select>
+          <button type="submit" class="btn btn--primary" {% unless product.available %}disabled{% endunless %}>
+            {%- if product.available -%}{{ 'products.add_to_cart' | t }}{%- else -%}Sold out{%- endif -%}
+          </button>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .main-product__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .main-product__media img, .main-product__media model-viewer {
+    width: 100%;
+    border-radius: var(--radius);
+  }
+  .main-product__placeholder { width: 100%; max-height: 500px; opacity: 0.3; }
+  .main-product__title { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+  .main-product__price { font-size: 1.5rem; font-weight: 700; color: var(--color-accent); margin-bottom: 1rem; }
+  .main-product__description { margin-bottom: 1.5rem; line-height: 1.7; color: var(--color-text-secondary); }
+  .main-product__variant-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-family: var(--font-body);
+  }
+  @media (max-width: 768px) {
+    .main-product__grid { grid-template-columns: 1fr; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product page",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

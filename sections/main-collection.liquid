@@ -1,0 +1,70 @@
+<section class="main-collection section-padding">
+  <div class="section-container">
+    <div class="section-header">
+      <h1 class="section-header__title">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <p class="section-header__desc">{{ collection.description }}</p>
+      {%- endif -%}
+    </div>
+    <div class="main-collection__grid">
+      {%- for product in collection.products -%}
+        <div class="product-card">
+          <a href="{{ product.url }}" class="product-card__link">
+            <div class="product-card__image">
+              {%- if product.featured_image -%}
+                {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.title }}
+              {%- endif -%}
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">{{ product.title }}</h3>
+              <div class="product-card__price">{{ product.price | money }}</div>
+            </div>
+          </a>
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}
+      {% paginate collection.products by 12 %}
+      <nav class="main-collection__pagination">
+        {{ paginate | default_pagination }}
+      </nav>
+      {% endpaginate %}
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .main-collection__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .main-collection__pagination {
+    text-align: center;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .main-collection__pagination a, .main-collection__pagination span {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    font-size: 0.875rem;
+  }
+  .main-collection__pagination .current {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+  }
+  @media (max-width: 1024px) { .main-collection__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .main-collection__grid { grid-template-columns: 1fr; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Collection page",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

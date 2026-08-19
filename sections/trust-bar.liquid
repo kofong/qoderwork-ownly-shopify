@@ -1,0 +1,102 @@
+<div class="trust-bar">
+  <div class="trust-bar__inner reveal">
+    {%- for block in section.blocks -%}
+      <div class="trust-bar__item" {{ block.shopify_attributes }}>
+        <div class="trust-bar__icon">
+          {{ block.settings.icon }}
+        </div>
+        <div>
+          <strong>{{ block.settings.title }}</strong><br>
+          {{ block.settings.description }}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .trust-bar {
+    background: var(--color-bg);
+    padding: 2rem 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .trust-bar__inner {
+    max-width: 1320px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .trust-bar__item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+  .trust-bar__icon {
+    width: 40px;
+    height: 40px;
+    background: var(--color-bg-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+  @media (max-width: 768px) {
+    .trust-bar__inner { justify-content: center; }
+    .trust-bar__item { flex: 0 0 45%; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Trust bar",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "✅"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Trust point"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Short detail"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Trust bar",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "🎯", "title": "No Minimum", "description": "Order even 1 piece" } },
+        { "type": "item", "settings": { "icon": "🤖", "title": "AI Design", "description": "Describe & generate" } },
+        { "type": "item", "settings": { "icon": "🌍", "title": "Global Shipping", "description": "Worldwide delivery" } },
+        { "type": "item", "settings": { "icon": "💰", "title": "Bulk Discounts", "description": "Up to 40% off" } },
+        { "type": "item", "settings": { "icon": "✅", "title": "Quality Guarantee", "description": "Free reprint" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

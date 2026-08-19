@@ -1,0 +1,135 @@
+[
+  {
+    "name": "t:settings.theme_info.name",
+    "theme_version": "1.0.0",
+    "theme_author": "Ownly",
+    "theme_documentation_url": "https://ownly.shop",
+    "theme_support_url": "https://ownly.shop/support"
+  },
+  {
+    "name": "t:settings.colors.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings.colors.primary.header"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "t:settings.colors.primary.label",
+        "default": "#1A1A2E"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "t:settings.colors.accent.label",
+        "default": "#FF6B35"
+      },
+      {
+        "type": "color",
+        "id": "color_ai",
+        "label": "t:settings.colors.ai.label",
+        "default": "#8B5CF6"
+      },
+      {
+        "type": "header",
+        "content": "t:settings.colors.backgrounds.header"
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "t:settings.colors.bg.label",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_light",
+        "label": "t:settings.colors.bg_light.label",
+        "default": "#F8F9FA"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_warm",
+        "label": "t:settings.colors.bg_warm.label",
+        "default": "#FFF8F3"
+      },
+      {
+        "type": "header",
+        "content": "t:settings.colors.text.header"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "t:settings.colors.text_primary.label",
+        "default": "#1A1A2E"
+      },
+      {
+        "type": "color",
+        "id": "color_text_secondary",
+        "label": "t:settings.colors.text_secondary.label",
+        "default": "#6B7280"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "t:settings.colors.border.label",
+        "default": "#E5E7EB"
+      }
+    ]
+  },
+  {
+    "name": "t:settings.typography.name",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": "t:settings.typography.heading.label",
+        "default": "inter_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "t:settings.typography.body.label",
+        "default": "inter_n4"
+      }
+    ]
+  },
+  {
+    "name": "t:settings.social.name",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "t:settings.social.instagram.label",
+        "info": "t:settings.social.instagram.info"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "t:settings.social.tiktok.label",
+        "info": "t:settings.social.tiktok.info"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "t:settings.social.twitter.label"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "t:settings.social.youtube.label"
+      }
+    ]
+  },
+  {
+    "name": "t:settings.favicon.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "t:settings.favicon.label",
+        "info": "t:settings.favicon.info"
+      }
+    ]
+  }
+]

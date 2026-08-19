@@ -1,0 +1,21 @@
+{
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "brand_description": "Your one-stop shop for custom printed products. Design online with AI or upload your own art. No minimum order, worldwide shipping.",
+        "newsletter_heading": "Get 10% off your first order",
+        "newsletter_placeholder": "Enter your email",
+        "newsletter_button_text": "Subscribe"
+      },
+      "blocks": {
+        "col-1": { "type": "link_column", "settings": { "title": "Products", "links": "T-Shirts & Apparel, Mugs & Drinkware, Phone Cases, Posters & Prints, Stickers & Pins" } },
+        "col-2": { "type": "link_column", "settings": { "title": "Services", "links": "AI Design Studio, Upload Your Design, Bulk Orders, For Business, Gift Cards" } },
+        "col-3": { "type": "link_column", "settings": { "title": "Support", "links": "How It Works, Shipping & Returns, Size Guide, FAQ, Contact Us" } }
+      },
+      "block_order": ["col-1", "col-2", "col-3"]
+    }
+  },
+  "order": ["footer"]
+}

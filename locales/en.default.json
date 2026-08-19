@@ -1,0 +1,139 @@
+{
+  "accessibility": {
+    "skip_to_content": "Skip to content"
+  },
+  "general": {
+    "shop_now": "Shop now",
+    "learn_more": "Learn more",
+    "get_started": "Get started",
+    "view_all": "View all",
+    "from": "From"
+  },
+  "sections": {
+    "announcement": {
+      "default_text": "Free shipping on orders over $49 | Use code FIRST10 for 10% off"
+    },
+    "hero": {
+      "badge": "AI-Powered Customization",
+      "heading": "Upload once, own everything.",
+      "heading_highlight": "own everything",
+      "description": "Custom T-shirts, AirPods cases, mugs, tote bags, stickers and more. Upload your logo or let AI design it — we produce the whole package.",
+      "cta_primary": "Start Creating",
+      "cta_ai": "Try AI Designer",
+      "float_no_min": "No minimum order",
+      "float_ai": "AI + Upload",
+      "float_ship": "Ships in 3-5 days"
+    },
+    "trust_bar": {
+      "no_min_title": "No Minimum",
+      "no_min_desc": "Order even 1 piece",
+      "ai_design_title": "AI Design",
+      "ai_design_desc": "Describe & generate",
+      "global_title": "Global Shipping",
+      "global_desc": "Worldwide delivery",
+      "bulk_title": "Bulk Discounts",
+      "bulk_desc": "Up to 40% off",
+      "quality_title": "Quality Guarantee",
+      "quality_desc": "Free reprint"
+    },
+    "categories": {
+      "tag": "Shop by Product",
+      "heading": "What Do You Want to Customize?",
+      "description": "From everyday essentials to unique gifts — pick your canvas and make it yours."
+    },
+    "customization": {
+      "tag": "Two Ways to Create",
+      "heading": "How Do You Want to Design?",
+      "description": "Upload your own artwork, or describe your idea and let AI bring it to life.",
+      "upload_title": "Upload Your Design",
+      "upload_desc": "Got your own artwork, logo, or photo? Upload it and see it on any product instantly.",
+      "upload_step1": "Pick a product",
+      "upload_step2": "Upload your image",
+      "upload_step3": "Adjust & preview",
+      "upload_step4": "Add to cart",
+      "upload_cta": "Upload & Create",
+      "ai_title": "AI Design Studio",
+      "ai_desc": "No design skills needed. Just describe what you want and AI generates unique designs.",
+      "ai_step1": "Describe your idea",
+      "ai_step2": "AI generates 4 designs",
+      "ai_step3": "Pick & customize",
+      "ai_step4": "Preview & order",
+      "ai_cta": "Try AI Designer"
+    },
+    "how_it_works": {
+      "tag": "Simple Process",
+      "heading": "How It Works",
+      "description": "From idea to doorstep in 4 easy steps.",
+      "step1_title": "Choose Product",
+      "step1_desc": "Browse our catalog of 50+ products",
+      "step2_title": "Design It",
+      "step2_desc": "Upload your art or generate with AI",
+      "step3_title": "Preview",
+      "step3_desc": "See real-time mockups before you buy",
+      "step4_title": "We Ship",
+      "step4_desc": "Produced on-demand, shipped to your door"
+    },
+    "occasions": {
+      "tag": "Shop by Occasion",
+      "heading": "What Are You Celebrating?",
+      "description": "Find the perfect custom product for every moment."
+    },
+    "b2b": {
+      "heading": "Custom Merch for Your Business",
+      "description": "Whether you need 10 branded polos or 500 event T-shirts, we handle everything. Volume discounts up to 40%.",
+      "feature_pricing": "Volume pricing — bigger orders, bigger savings",
+      "feature_design": "Free design assistance for orders 50+",
+      "feature_shipping": "Bulk shipping & individual packaging",
+      "feature_rush": "Rush orders available — as fast as 48 hours",
+      "cta": "Get a Bulk Quote"
+    },
+    "testimonials": {
+      "tag": "Happy Customers",
+      "heading": "What People Are Making",
+      "description": "Real stories from real customers who brought their ideas to life."
+    },
+    "cta_banner": {
+      "heading": "Ready to Create Something Unique?",
+      "description": "Upload your design or let AI bring your idea to life. No minimum order required.",
+      "cta_text": "Start Your Custom Order"
+    }
+  },
+  "products": {
+    "add_to_cart": "Add to cart",
+    "from_price": "From {{ price }}"
+  },
+  "settings": {
+    "theme_info": { "name": "Ownly Theme" },
+    "colors": {
+      "name": "Colors",
+      "primary": { "header": "Brand Colors", "label": "Primary (navy)" },
+      "accent": { "label": "Accent (orange)" },
+      "ai": { "label": "AI Studio (purple)" },
+      "backgrounds": { "header": "Backgrounds" },
+      "bg": { "label": "Background" },
+      "bg_light": { "label": "Light background" },
+      "bg_warm": { "label": "Warm background" },
+      "text": { "header": "Text & Borders" },
+      "text_primary": { "label": "Primary text" },
+      "text_secondary": { "label": "Secondary text" },
+      "border": { "label": "Border" }
+    },
+    "typography": {
+      "name": "Typography",
+      "heading": { "label": "Heading font" },
+      "body": { "label": "Body font" }
+    },
+    "social": {
+      "name": "Social media",
+      "instagram": { "label": "Instagram", "info": "https://instagram.com/..." },
+      "tiktok": { "label": "TikTok", "info": "https://tiktok.com/@..." },
+      "twitter": { "label": "X (Twitter)" },
+      "youtube": { "label": "YouTube" }
+    },
+    "favicon": {
+      "name": "Favicon",
+      "label": "Favicon image",
+      "info": "32 x 32px .png recommended"
+    }
+  }
+}

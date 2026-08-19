@@ -1,0 +1,15 @@
+{
+  "current": {
+    "color_primary": "#1A1A2E",
+    "color_accent": "#FF6B35",
+    "color_ai": "#8B5CF6",
+    "color_bg": "#FFFFFF",
+    "color_bg_light": "#F8F9FA",
+    "color_bg_warm": "#FFF8F3",
+    "color_text": "#1A1A2E",
+    "color_text_secondary": "#6B7280",
+    "color_border": "#E5E7EB",
+    "type_header_font": "inter_n7",
+    "type_body_font": "inter_n4"
+  }
+}

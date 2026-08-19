@@ -1,0 +1,104 @@
+{%- liquid -%}
+  {%- assign product = block.settings.product -%}
+{%- endliquid -%}
+
+<div class="product-card" {{ block.shopify_attributes }}>
+  <a href="{{ product.url | default: '#' }}" class="product-card__link">
+    <div class="product-card__image">
+      {%- if product.featured_image != blank -%}
+        {{ product.featured_image | image_url: width: 600 | image_tag:
+          loading: 'lazy',
+          alt: product.title,
+          width: product.featured_image.width,
+          height: product.featured_image.height
+        }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'product-card__placeholder' }}
+      {%- endif -%}
+
+      {%- if block.settings.badge != blank -%}
+        <span class="product-card__badge">{{ block.settings.badge }}</span>
+      {%- endif -%}
+    </div>
+
+    <div class="product-card__info">
+      <h3 class="product-card__name">{{ product.title | default: block.settings.fallback_title }}</h3>
+      <p class="product-card__desc">{{ block.settings.subtitle }}</p>
+      <div class="product-card__price">
+        {%- if product != blank -%}
+          {{ product.price | money }}
+        {%- else -%}
+          {{ block.settings.fallback_price }}
+        {%- endif -%}
+      </div>
+    </div>
+  </a>
+</div>
+
+{% stylesheet %}
+  .product-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid var(--color-border);
+  }
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .product-card__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .product-card__image {
+    height: 240px;
+    background: var(--color-bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .product-card__placeholder {
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+  }
+  .product-card__badge {
+    position: absolute;
+    top: 12px;
+    inset-inline-start: 12px;
+    background: var(--color-accent);
+    color: white;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+  .product-card__info {
+    padding: 1rem;
+  }
+  .product-card__name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .product-card__desc {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+  }
+  .product-card__price {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+{% endstylesheet %}

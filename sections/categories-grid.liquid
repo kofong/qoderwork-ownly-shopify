@@ -1,0 +1,152 @@
+<section class="categories section-padding">
+  <div class="section-container">
+    <div class="section-header reveal">
+      {%- if section.settings.tag != blank -%}
+        <span class="section-tag">{{ section.settings.tag }}</span>
+      {%- endif -%}
+      <h2 class="section-header__title">{{ section.settings.heading }}</h2>
+      <p class="section-header__desc">{{ section.settings.description }}</p>
+    </div>
+
+    <div class="categories__grid reveal-stagger">
+      {%- for block in section.blocks -%}
+        <a
+          href="{{ block.settings.url | default: routes.all_products_collection_url }}"
+          class="categories__card{% if forloop.first %} categories__card--featured{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <span class="categories__emoji">{{ block.settings.icon }}</span>
+          <div class="categories__name">{{ block.settings.title }}</div>
+          <div class="categories__count">{{ block.settings.subtitle }}</div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .categories { background: var(--color-bg); }
+  .categories__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .categories__card {
+    background: var(--color-bg-light);
+    border-radius: var(--radius);
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+  }
+  .categories__card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .categories__card--featured {
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #2D2B55 100%);
+    color: white;
+  }
+  .categories__card--featured .categories__name { color: white; }
+  .categories__card--featured .categories__count { color: rgba(255,255,255,0.6); }
+  .categories__emoji {
+    font-size: 3rem;
+    margin-bottom: 0.875rem;
+    display: block;
+  }
+  .categories__name {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .categories__count {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+  }
+  @media (max-width: 1024px) {
+    .categories__grid { grid-template-columns: repeat(2, 1fr); }
+    .categories__card--featured { grid-row: span 1; }
+  }
+  @media (max-width: 480px) {
+    .categories__grid { grid-template-columns: 1fr 1fr; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Categories grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Section tag",
+      "default": "Shop by Product"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Do You Want to Customize?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "From everyday essentials to unique gifts — pick your canvas and make it yours."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "📦"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Category name"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "From $9.99"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Categories grid",
+      "blocks": [
+        { "type": "category", "settings": { "icon": "👕", "title": "T-Shirts & Apparel", "subtitle": "6,300+ options · From $14.99" } },
+        { "type": "category", "settings": { "icon": "☕", "title": "Mugs & Drinkware", "subtitle": "From $9.99" } },
+        { "type": "category", "settings": { "icon": "📱", "title": "Phone Cases", "subtitle": "From $12.99" } },
+        { "type": "category", "settings": { "icon": "🎒", "title": "Bags & Accessories", "subtitle": "From $11.99" } },
+        { "type": "category", "settings": { "icon": "🖼️", "title": "Posters & Prints", "subtitle": "From $8.99" } },
+        { "type": "category", "settings": { "icon": "🔑", "title": "Keychains & Pins", "subtitle": "From $5.99" } },
+        { "type": "category", "settings": { "icon": "💌", "title": "Cards & Stickers", "subtitle": "From $3.99" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

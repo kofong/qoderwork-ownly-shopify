@@ -1,0 +1,70 @@
+<section class="cta-banner section-padding">
+  <div class="section-container" style="text-align: center;">
+    <h2 class="cta-banner__heading">{{ section.settings.heading }}</h2>
+    <p class="cta-banner__description">{{ section.settings.description }}</p>
+    <a href="{{ section.settings.cta_url | default: routes.all_products_collection_url }}" class="btn btn--cta">
+      {{ section.settings.cta_text }}
+    </a>
+  </div>
+</section>
+
+{% stylesheet %}
+  .cta-banner {
+    background: linear-gradient(135deg, var(--color-accent) 0%, color-mix(in srgb, var(--color-accent) 70%, #FFD700) 100%);
+    color: white;
+  }
+  .cta-banner__heading {
+    font-size: clamp(1.75rem, 3vw, 2rem);
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+  }
+  .cta-banner__description {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+  .btn--cta {
+    background: white;
+    color: var(--color-accent);
+  }
+  .btn--cta:hover {
+    background: #f0f0f0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "CTA banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready to Create Something Unique?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Upload your design or let AI bring your idea to life. No minimum order required."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Start Your Custom Order"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA banner"
+    }
+  ]
+}
+{% endschema %}

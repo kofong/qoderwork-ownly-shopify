@@ -1,0 +1,338 @@
+<section class="customization section-padding">
+  <div class="section-container">
+    <div class="section-header">
+      {%- if section.settings.tag != blank -%}
+        <span class="section-tag">{{ section.settings.tag }}</span>
+      {%- endif -%}
+      <h2 class="section-header__title">{{ section.settings.heading }}</h2>
+      <p class="section-header__desc">{{ section.settings.description }}</p>
+    </div>
+
+    <div class="customization__grid">
+      {%- comment -%} Upload Path Card {%- endcomment -%}
+      <div class="customization__card">
+        <h3 class="customization__card-title">
+          {{ section.settings.upload_icon }} {{ section.settings.upload_title }}
+        </h3>
+        <p class="customization__card-desc">{{ section.settings.upload_description }}</p>
+
+        <div class="customization__steps">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'upload_step' -%}
+              <div class="customization__step" {{ block.shopify_attributes }}>
+                <div class="customization__step-num">{{ block.settings.number }}</div>
+                <div class="customization__step-text">{{ block.settings.text }}</div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <a href="{{ section.settings.upload_cta_url }}" class="btn btn--primary">
+          {{ section.settings.upload_cta_text }}
+        </a>
+
+        <div class="customization__visual">
+          <div class="customization__upload-zone">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+            <span>Drop image here</span>
+          </div>
+          <span class="customization__arrow">→</span>
+          <div class="customization__preview">👕</div>
+        </div>
+      </div>
+
+      {%- comment -%} AI Path Card {%- endcomment -%}
+      <div class="customization__card customization__card--ai">
+        <h3 class="customization__card-title">
+          {{ section.settings.ai_icon }} {{ section.settings.ai_title }}
+        </h3>
+        <p class="customization__card-desc">{{ section.settings.ai_description }}</p>
+
+        <div class="customization__steps">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'ai_step' -%}
+              <div class="customization__step" {{ block.shopify_attributes }}>
+                <div class="customization__step-num customization__step-num--ai">{{ block.settings.number }}</div>
+                <div class="customization__step-text">{{ block.settings.text }}</div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <a href="{{ section.settings.ai_cta_url }}" class="btn btn--ai">
+          {{ section.settings.ai_cta_text }}
+        </a>
+
+        <div class="customization__visual customization__visual--ai">
+          <div class="customization__ai-prompt">
+            <span>✨</span>
+            <span class="customization__ai-prompt-text">"Describe your design idea..."</span>
+          </div>
+          <div class="customization__ai-thumbs">
+            <div class="customization__ai-thumb customization__ai-thumb--1"></div>
+            <div class="customization__ai-thumb customization__ai-thumb--2"></div>
+            <div class="customization__ai-thumb customization__ai-thumb--3"></div>
+            <div class="customization__ai-thumb customization__ai-thumb--4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .customization { background: var(--color-bg-light); }
+  .customization__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+  }
+  .customization__card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    transition: var(--transition);
+    border: 2px solid transparent;
+  }
+  .customization__card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .customization__card--ai {
+    background: linear-gradient(135deg, #F0EAFF 0%, #E8DEFF 100%);
+    border-color: var(--color-ai);
+  }
+  .customization__card--ai:hover {
+    border-color: color-mix(in srgb, var(--color-ai) 80%, black);
+  }
+  .customization__card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .customization__card-desc {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .customization__steps { margin-bottom: 1.5rem; }
+  .customization__step {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .customization__step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .customization__step-num--ai {
+    background: var(--color-ai);
+  }
+  .customization__step-text {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+  .customization__visual {
+    margin-top: 1.5rem;
+    background: var(--color-bg-light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .customization__visual--ai {
+    background: color-mix(in srgb, var(--color-ai) 8%, transparent);
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .customization__upload-zone {
+    width: 160px;
+    height: 120px;
+    border: 2px dashed var(--color-border);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+  }
+  .customization__arrow {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+  }
+  .customization__preview {
+    width: 120px;
+    height: 140px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    box-shadow: var(--shadow);
+  }
+  .customization__ai-prompt {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 2px solid color-mix(in srgb, var(--color-ai) 30%, transparent);
+    background: white;
+    font-size: 0.875rem;
+  }
+  .customization__ai-prompt-text { color: var(--color-text-secondary); }
+  .customization__ai-thumbs {
+    display: flex;
+    gap: 0.625rem;
+    margin-top: 0.75rem;
+  }
+  .customization__ai-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    flex: 1;
+  }
+  .customization__ai-thumb--1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+  .customization__ai-thumb--2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+  .customization__ai-thumb--3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+  .customization__ai-thumb--4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+
+  @media (max-width: 768px) {
+    .customization__grid { grid-template-columns: 1fr; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Customization paths",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Section tag",
+      "default": "Two Ways to Create"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How Do You Want to Design?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Upload your own artwork, or describe your idea and let AI bring it to life."
+    },
+    {
+      "type": "text",
+      "id": "upload_icon",
+      "label": "Upload icon",
+      "default": "📤"
+    },
+    {
+      "type": "text",
+      "id": "upload_title",
+      "label": "Upload card title",
+      "default": "Upload Your Design"
+    },
+    {
+      "type": "textarea",
+      "id": "upload_description",
+      "label": "Upload card description",
+      "default": "Got your own artwork, logo, or photo? Upload it and see it on any product instantly. We support PNG, JPG, SVG, and AI files."
+    },
+    {
+      "type": "text",
+      "id": "upload_cta_text",
+      "label": "Upload button text",
+      "default": "Upload & Create"
+    },
+    {
+      "type": "url",
+      "id": "upload_cta_url",
+      "label": "Upload button link"
+    },
+    {
+      "type": "text",
+      "id": "ai_icon",
+      "label": "AI icon",
+      "default": "✨"
+    },
+    {
+      "type": "text",
+      "id": "ai_title",
+      "label": "AI card title",
+      "default": "AI Design Studio"
+    },
+    {
+      "type": "textarea",
+      "id": "ai_description",
+      "label": "AI card description",
+      "default": "No design skills needed. Just describe what you want — 'a retro sunset cat wearing sunglasses' — and AI generates unique designs for you."
+    },
+    {
+      "type": "text",
+      "id": "ai_cta_text",
+      "label": "AI button text",
+      "default": "Try AI Designer"
+    },
+    {
+      "type": "url",
+      "id": "ai_cta_url",
+      "label": "AI button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "upload_step",
+      "name": "Upload step",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Step number", "default": "1" },
+        { "type": "text", "id": "text", "label": "Step text", "default": "Pick a product" }
+      ]
+    },
+    {
+      "type": "ai_step",
+      "name": "AI step",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Step number", "default": "1" },
+        { "type": "text", "id": "text", "label": "Step text", "default": "Describe your idea" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customization paths",
+      "blocks": [
+        { "type": "upload_step", "settings": { "number": "1", "text": "Pick a product (T-shirt, mug, etc.)" } },
+        { "type": "upload_step", "settings": { "number": "2", "text": "Upload your image or drag & drop" } },
+        { "type": "upload_step", "settings": { "number": "3", "text": "Adjust size, position, and preview" } },
+        { "type": "upload_step", "settings": { "number": "4", "text": "Add to cart and checkout" } },
+        { "type": "ai_step", "settings": { "number": "1", "text": "Describe your idea in words" } },
+        { "type": "ai_step", "settings": { "number": "2", "text": "AI generates 4 unique designs" } },
+        { "type": "ai_step", "settings": { "number": "3", "text": "Pick your favorite & customize" } },
+        { "type": "ai_step", "settings": { "number": "4", "text": "Preview on product & order" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

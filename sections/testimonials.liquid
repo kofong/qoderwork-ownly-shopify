@@ -1,0 +1,124 @@
+<section class="testimonials section-padding">
+  <div class="section-container">
+    <div class="section-header reveal">
+      {%- if section.settings.tag != blank -%}
+        <span class="section-tag">{{ section.settings.tag }}</span>
+      {%- endif -%}
+      <h2 class="section-header__title">{{ section.settings.heading }}</h2>
+      <p class="section-header__desc">{{ section.settings.description }}</p>
+    </div>
+
+    <div class="testimonials__grid reveal-stagger">
+      {%- for block in section.blocks -%}
+        <div class="testimonials__card" {{ block.shopify_attributes }}>
+          <div class="testimonials__stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonials__text">"{{ block.settings.quote }}"</p>
+          <div class="testimonials__author">
+            <div class="testimonials__avatar">{{ block.settings.initial }}</div>
+            <div>
+              <div class="testimonials__name">{{ block.settings.name }}</div>
+              <div class="testimonials__role">{{ block.settings.role }}</div>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .testimonials { background: var(--color-bg-warm); }
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .testimonials__card {
+    background: var(--color-bg-light);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+  .testimonials__stars {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .testimonials__text {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .testimonials__author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .testimonials__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .testimonials__name { font-size: 0.875rem; font-weight: 600; }
+  .testimonials__role { font-size: 0.75rem; color: var(--color-text-secondary); }
+
+  @media (max-width: 768px) {
+    .testimonials__grid { grid-template-columns: 1fr; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Section tag",
+      "default": "Happy Customers"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What People Are Making"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Real stories from real customers who brought their ideas to life."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "text", "id": "initial", "label": "Avatar initial", "default": "M" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Mike R." },
+        { "type": "text", "id": "role", "label": "Role", "default": "Startup Founder" },
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "Amazing quality and fast shipping!" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "initial": "M", "name": "Mike R.", "role": "Startup Founder", "quote": "Ordered 30 custom T-shirts for our startup launch. The AI designer made it so easy — perfect designs in seconds." } },
+        { "type": "testimonial", "settings": { "initial": "S", "name": "Sarah L.", "role": "Mom & Blogger", "quote": "Made personalized mugs with my kids drawings as Christmas gifts. Upload was super simple and the print quality is amazing." } },
+        { "type": "testimonial", "settings": { "initial": "J", "name": "Jake T.", "role": "Podcast Host, 50K listeners", "quote": "We order custom merch for every episode. Bulk pricing is great and turnaround time is fast. This is our go-to." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

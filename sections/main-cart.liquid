@@ -1,0 +1,97 @@
+<section class="main-cart section-padding">
+  <div class="section-container" style="max-width: 800px;">
+    <h1 class="main-cart__title">Your Cart</h1>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post">
+        {%- for item in cart.items -%}
+          <div class="main-cart__item">
+            <div class="main-cart__image">
+              {%- if item.image -%}
+                {{ item.image | image_url: width: 200 | image_tag: loading: 'lazy', alt: item.title, width: 100, height: 100 }}
+              {%- endif -%}
+            </div>
+            <div class="main-cart__details">
+              <h3 class="main-cart__product-name">
+                <a href="{{ item.url }}">{{ item.product.title }}</a>
+              </h3>
+              {%- unless item.variant.title == 'Default Title' -%}
+                <p class="main-cart__variant">{{ item.variant.title }}</p>
+              {%- endunless -%}
+            </div>
+            <div class="main-cart__quantity">
+              <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" class="main-cart__qty-input">
+            </div>
+            <div class="main-cart__price">{{ item.line_price | money }}</div>
+          </div>
+        {%- endfor -%}
+
+        <div class="main-cart__footer">
+          <div class="main-cart__subtotal">
+            <span>Subtotal:</span>
+            <strong>{{ cart.total_price | money }}</strong>
+          </div>
+          <button type="submit" name="update" class="btn btn--secondary">Update Cart</button>
+          <button type="submit" name="checkout" class="btn btn--primary">Checkout</button>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="main-cart__empty">
+        <p>Your cart is empty.</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">Continue Shopping</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .main-cart__title { font-size: 2rem; font-weight: 800; margin-bottom: 2rem; }
+  .main-cart__item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .main-cart__image img { border-radius: 8px; }
+  .main-cart__product-name a { font-weight: 600; }
+  .main-cart__product-name a:hover { color: var(--color-accent); }
+  .main-cart__variant { font-size: 0.875rem; color: var(--color-text-secondary); }
+  .main-cart__qty-input {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    text-align: center;
+    font-family: var(--font-body);
+  }
+  .main-cart__price { font-weight: 700; }
+  .main-cart__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .main-cart__subtotal {
+    margin-inline-end: auto;
+    font-size: 1.125rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .main-cart__empty {
+    text-align: center;
+    padding: 3rem 0;
+  }
+  .main-cart__empty p { margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--color-text-secondary); }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Cart",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

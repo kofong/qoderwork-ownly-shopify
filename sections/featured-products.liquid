@@ -1,0 +1,106 @@
+<section class="featured-products section-padding" style="background: var(--color-bg-light);">
+  <div class="section-container">
+    <div class="section-header reveal">
+      {%- if section.settings.tag != blank -%}
+        <span class="section-tag">{{ section.settings.tag }}</span>
+      {%- endif -%}
+      <h2 class="section-header__title">{{ section.settings.heading }}</h2>
+      <p class="section-header__desc">{{ section.settings.description }}</p>
+    </div>
+
+    <div class="featured-products__grid reveal-stagger">
+      {%- for block in section.blocks -%}
+        {%- render 'product-card', block: block -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.view_all_url != blank -%}
+      <div class="featured-products__footer">
+        <a href="{{ section.settings.view_all_url }}" class="btn btn--secondary">
+          {{ section.settings.view_all_text }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .featured-products__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .featured-products__footer {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  @media (max-width: 1024px) {
+    .featured-products__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .featured-products__grid { grid-template-columns: 1fr; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Featured products",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Section tag",
+      "default": "Most Popular"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Bestselling Custom Products"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "See what other creators are making. Every product is printed on-demand just for you."
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View all button text",
+      "default": "View All Products"
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "View all button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product card",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "text", "id": "fallback_title", "label": "Fallback title (if no product)", "default": "Custom Product" },
+        { "type": "text", "id": "fallback_price", "label": "Fallback price", "default": "$19.99" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Premium quality" },
+        { "type": "text", "id": "badge", "label": "Badge text" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Featured products",
+      "blocks": [
+        { "type": "product_card", "settings": { "fallback_title": "Custom Print T-Shirt", "fallback_price": "$19.99", "subtitle": "Premium cotton · DTG printing", "badge": "Bestseller" } },
+        { "type": "product_card", "settings": { "fallback_title": "Custom AirPods Case", "fallback_price": "$14.99", "subtitle": "UV printing · All models" } },
+        { "type": "product_card", "settings": { "fallback_title": "Custom Tote Bag", "fallback_price": "$16.99", "subtitle": "Canvas · Eco-friendly", "badge": "New" } },
+        { "type": "product_card", "settings": { "fallback_title": "Custom Mug", "fallback_price": "$12.99", "subtitle": "Ceramic · Dishwasher safe" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
