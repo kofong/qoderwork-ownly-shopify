@@ -884,13 +884,13 @@
         "text_eFMntb": {
           "type": "text",
           "settings": {
-            "text": "<p>No minimum orders · AI-powered design · Bulk discounts up to 40% · Quality guaranteed with free reprints — everything you need to own your brand.</p>",
+            "text": "<p>No minimum orders · AI-powered design · Bulk discounts up to 40% · Quality guaranteed with free reprints</p>",
             "width": "100%",
             "max_width": "narrow",
             "alignment": "center",
-            "type_preset": "h3",
+            "type_preset": "paragraph",
             "font": "var(--font-body--family)",
-            "font_size": "1rem",
+            "font_size": "1.125rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
@@ -919,10 +919,36 @@
             "custom_width_mobile": 100
           },
           "blocks": {}
+        },
+        "text_x8_head": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Everything you need to own your brand</h2>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "font_size": "2.5rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "group_QGT49U",
+        "text_x8_head",
         "text_eFMntb",
         "button_TmU98M"
       ],
@@ -977,8 +1003,11 @@
           "static": true,
           "settings": {
             "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "flex-end",
-            "gap": 24
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 24,
+            "padding-block-start": 48,
+            "padding-block-end": 48,
+            "padding-inline-start": 48
           },
           "blocks": {
             "text_4iefgW": {
@@ -2043,7 +2072,7 @@
                 "cat_3_title": {
                   "type": "text",
                   "settings": {
-                    "text": "<h4>Phone Cases</h4>",
+                    "text": "<h4>Phone &amp; AirPods Cases</h4>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -4394,7 +4423,7 @@
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "center",
             "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
+            "horizontal_alignment_flex_direction_column": "center",
             "vertical_alignment_flex_direction_column": "center",
             "gap": 12,
             "width": "fill",
@@ -4431,7 +4460,7 @@
                 "text": "<h2>Custom Merch for Your Business</h2>",
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "left",
+                "alignment": "center",
                 "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "",
@@ -4457,7 +4486,7 @@
                 "text": "<p>Whether you need 10 branded polos or 500 event T-shirts — volume pricing, free design help on orders 50+, and rush production as fast as 48 hours.</p>",
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "left",
+                "alignment": "center",
                 "type_preset": "paragraph",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -4945,7 +4974,7 @@
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
+        "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
         "gap": 40,
         "section_width": "page-width",
